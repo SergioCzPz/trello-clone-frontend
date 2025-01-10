@@ -1,0 +1,6 @@
+dist/
+coverage/
+node_modules/
+tsconfig.app.json
+tsconfig.json
+tsconfig.spec.json
