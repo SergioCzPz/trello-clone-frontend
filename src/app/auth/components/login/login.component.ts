@@ -1,15 +1,15 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-import { RegisterUserForm } from '../../types/registerRequest.interface';
 import { HttpErrorResponse } from '@angular/common/http';
+import { LoginUserForm } from '../../types/loginRequest.interface';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-auth-register',
-  templateUrl: './register.component.html',
+  selector: 'app-auth-login',
+  templateUrl: './login.component.html',
 })
-export class RegisterComponent {
+export class LoginComponent {
   private readonly fb = inject(FormBuilder);
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router);
@@ -18,27 +18,23 @@ export class RegisterComponent {
 
   public form = this.fb.group({
     email: ['', [Validators.required]],
-    username: ['', [Validators.required]],
     password: ['', [Validators.required]],
   });
 
   onSubmit(): void {
     if (
       this.form.controls['email'] !== null &&
-      this.form.controls['password'] !== null &&
-      this.form.controls['username'] !== null
+      this.form.controls['password'] !== null
     ) {
-      const registerEmail = this.form.controls['email'].value;
-      const registerUsername = this.form.controls['username'].value;
-      const registerPassword = this.form.controls['password'].value;
+      const loginEmail = this.form.controls['email'].value;
+      const loginPassword = this.form.controls['password'].value;
 
-      const registerUser: RegisterUserForm = {
-        email: registerEmail,
-        password: registerPassword,
-        username: registerUsername,
+      const loginUser: LoginUserForm = {
+        email: loginEmail,
+        password: loginPassword,
       };
 
-      this.authService.register(registerUser).subscribe({
+      this.authService.login(loginUser).subscribe({
         next: currentUser => {
           this.authService.setToken(currentUser);
           this.authService.setCurrentUser(currentUser);
@@ -46,7 +42,7 @@ export class RegisterComponent {
           this.router.navigateByUrl('/');
         },
         error: (err: HttpErrorResponse) => {
-          this.errorMessage = err.error.join(', ');
+          this.errorMessage = err.error.emailOrPassword;
         },
       });
     }
