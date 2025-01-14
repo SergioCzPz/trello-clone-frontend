@@ -5,6 +5,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { BoardsService } from '../../../shared/services/boards.service';
+import { BoardInterface } from '../../../shared/types/board.interface';
 
 @Component({
   selector: 'app-boards',
@@ -13,10 +14,17 @@ import { BoardsService } from '../../../shared/services/boards.service';
 })
 export class BoardsComponent implements OnInit {
   private readonly boardsService = inject(BoardsService);
+  boards: BoardInterface[] = [];
 
   ngOnInit(): void {
     this.boardsService.getBoards().subscribe(boards => {
-      console.log(boards);
+      this.boards = boards;
+    });
+  }
+
+  createBoard(title: string): void {
+    this.boardsService.createBoard(title).subscribe(createdBoard => {
+      this.boards = [...this.boards, createdBoard];
     });
   }
 }
