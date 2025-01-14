@@ -12,6 +12,7 @@ import {
 import { HomeModule } from './home/home.module';
 import { AuthInterceptor } from './auth/services/authinterceptor.service';
 import { BoardsModule } from './boards/boards.module';
+import { TopBarModule } from './shared/modules/topbar/top-bar.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +22,7 @@ import { BoardsModule } from './boards/boards.module';
     AuthModule,
     HomeModule,
     BoardsModule,
+    TopBarModule,
   ],
   providers: [
     provideHttpClient(withInterceptorsFromDi()),

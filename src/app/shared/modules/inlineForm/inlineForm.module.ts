@@ -7,6 +7,5 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [CommonModule, ReactiveFormsModule],
   exports: [InlineFormComponent],
   declarations: [InlineFormComponent],
-  providers: [],
 })
 export class InlineFormModule {}

@@ -43,4 +43,9 @@ export class AuthService {
   setCurrentUser(currentuser: CurrentUserInterface | null): void {
     this.currentUser$.next(currentuser);
   }
+
+  logout(): void {
+    localStorage.removeItem('token');
+    this.currentUser$.next(null);
+  }
 }
