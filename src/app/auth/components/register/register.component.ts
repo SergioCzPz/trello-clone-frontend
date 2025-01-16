@@ -4,6 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import { RegisterUserForm } from '../../types/registerRequest.interface';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { SocketService } from '../../../shared/services/socket.service';
 
 @Component({
   selector: 'app-auth-register',
@@ -14,6 +15,7 @@ export class RegisterComponent {
   private readonly fb = inject(FormBuilder);
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router);
+  private readonly socketService = inject(SocketService);
 
   public errorMessage: string | null = null;
 
@@ -42,6 +44,7 @@ export class RegisterComponent {
       this.authService.register(registerUser).subscribe({
         next: currentUser => {
           this.authService.setToken(currentUser);
+          this.socketService.setupSocketConnection(currentUser);
           this.authService.setCurrentUser(currentUser);
           this.errorMessage = null;
           this.router.navigateByUrl('/');

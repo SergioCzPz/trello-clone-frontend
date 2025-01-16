@@ -4,6 +4,7 @@ import { AuthService } from '../../services/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { LoginUserForm } from '../../types/loginRequest.interface';
 import { Router } from '@angular/router';
+import { SocketService } from '../../../shared/services/socket.service';
 
 @Component({
   selector: 'app-auth-login',
@@ -14,6 +15,7 @@ export class LoginComponent {
   private readonly fb = inject(FormBuilder);
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router);
+  private readonly socketService = inject(SocketService);
 
   public errorMessage: string | null = null;
 
@@ -38,6 +40,7 @@ export class LoginComponent {
       this.authService.login(loginUser).subscribe({
         next: currentUser => {
           this.authService.setToken(currentUser);
+          this.socketService.setupSocketConnection(currentUser);
           this.authService.setCurrentUser(currentUser);
           this.errorMessage = null;
           this.router.navigateByUrl('/');
