@@ -28,12 +28,13 @@
           />
         </button>
       </div>
-      <div
+      <button
         *ngFor="let task of getTasksByColumn(column.id, data.tasks)"
         class="task"
+        (click)="openTask(task.id)"
       >
         {{ task.title }}
-      </div>
+      </button>
       <app-inline-form
         class="create-task-form"
         defaultText="Add a card"
@@ -54,3 +55,4 @@
     ></app-inline-form>
   </div>
 </div>
+<router-outlet />
