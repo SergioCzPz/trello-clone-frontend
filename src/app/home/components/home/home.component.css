@@ -1,0 +1,73 @@
+.home-hero {
+  margin: 0 auto;
+  padding: 0 3.5rem;
+}
+
+.home-hero .home-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 144rem;
+  margin: 0 auto;
+}
+
+.home-hero-img {
+  max-width: 100%;
+  width: 100%;
+}
+
+.home-team {
+  margin: 0 auto;
+  padding: 0 3.5rem;
+}
+
+.home-team .team-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 144rem;
+  margin: 0 auto;
+}
+
+.team-image {
+  max-width: 100%;
+  width: 100%;
+}
+
+.home-information {
+  margin: 0 auto;
+  padding: 0 3.5rem;
+}
+
+.home-information .information-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 144rem;
+  margin: 0 auto;
+}
+
+.information-img {
+  max-width: 100%;
+  width: 75%;
+}
+
+.home-workflow {
+  margin: 0 auto;
+  padding: 0 3.5rem;
+}
+
+.home-workflow .workflow-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 144rem;
+  margin: 0 auto;
+}
+
+.workflow-ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
