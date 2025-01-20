@@ -1,3 +1,9 @@
+@media (max-width: 819px) {
+  .home-header {
+    position: static;
+  }
+}
+
 .home-hero {
   margin: 0 auto;
   padding: 0 3.5rem;
@@ -47,6 +53,13 @@
   margin: 0 auto;
 }
 
+@media (max-width: 767px) {
+  .home-information .home-container.information-container {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
 .information-img {
   max-width: 100%;
   width: 75%;
@@ -70,4 +83,19 @@
   flex-direction: column;
   gap: 1rem;
   margin-top: 1rem;
+}
+
+.workflow-image {
+  max-width: 100%;
+  width: 100%;
+}
+
+@media (max-width: 767px) {
+  .home-workflow .workflow-container,
+  .home-information .information-container,
+  .home-team .team-container,
+  .home-hero .home-container {
+    display: flex;
+    flex-direction: column;
+  }
 }
