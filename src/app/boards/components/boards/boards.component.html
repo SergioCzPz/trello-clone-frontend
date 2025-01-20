@@ -1,17 +1,17 @@
 <app-top-bar></app-top-bar>
 
-<div class="boards-page-container">
+<div class="boards-page-container boards">
   <div class="home-left-sidebar-container">
     <a
       routerLink="/boards"
-      class="boards-side-menu-option"
+      class="boards-side-menu-option roboto-regular"
       routerLinkActive="boards-side-menu-option-selected"
       >Boards</a
     >
     <a
       routerLink="/"
-      class="boards-side-menu-option"
-      routerLinkActive="boards-side-menu-option-selected"
+      class="boards-side-menu-option roboto-regular"
+      routerLinkActive="boards-side-menu-option-selected "
       [routerLinkActiveOptions]="{ exact: true }"
       >Home</a
     >
@@ -19,7 +19,7 @@
   <div class="boards-section-container">
     <div class="my-boards">
       <div class="my-boards-section-header">
-        <div class="boards-page-header-name">My boards</div>
+        <h2 class="boards-page-header-name roboto-bold">My boards</h2>
       </div>
       <div class="board-tile-list">
         <app-inline-form
@@ -27,12 +27,14 @@
           defaultText="Create new board"
           (handleSubmit)="createBoard($event)"
         ></app-inline-form>
+      </div>
+      <div class="board__boards">
         <a
           [routerLink]="['/boards', board.id]"
           *ngFor="let board of boards"
           class="board-tile"
         >
-          <div class="board-tile-datails-name">{{ board.title }}</div>
+          {{ board.title }}
         </a>
       </div>
     </div>

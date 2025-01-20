@@ -12,6 +12,7 @@ import { Subject, takeUntil } from 'rxjs';
 @Component({
   selector: 'app-boards',
   templateUrl: './boards.component.html',
+  styleUrl: './boards.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BoardsComponent implements OnInit, OnDestroy {

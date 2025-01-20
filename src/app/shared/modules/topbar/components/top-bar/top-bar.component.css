@@ -1,0 +1,30 @@
+.navbar-boards {
+  padding: 1.5rem;
+  height: auto;
+}
+
+.navbar-left-side {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.navbar-left-side a {
+  margin: 0;
+  padding: 1rem;
+  width: auto;
+
+  transition: background-color 0.3s ease;
+}
+
+.navbar-left-side img {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: 0;
+}
+
+.navbar-right-side .btn-logout {
+  border: none;
+  margin: 0;
+  padding: 1rem;
+  transition: background-color 0.3s ease;
+}

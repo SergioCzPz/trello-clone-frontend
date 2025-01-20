@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-top-bar',
   templateUrl: './top-bar.component.html',
+  styleUrl: './top-bar.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TopBarComponent {

@@ -1,0 +1,5 @@
+.boards {
+  display: grid;
+  grid-template-columns: 0.25fr 0.75fr;
+  padding: 2rem;
+}
