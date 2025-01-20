@@ -7,25 +7,29 @@
     />
   </a>
   <div class="form-container">
-    <div class="login-header">Login to Trello</div>
+    <h2 class="login-header roboto-bold">Login to Trello</h2>
     <div class="errors" *ngIf="errorMessage">{{ errorMessage }}</div>
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <input
         formControlName="email"
         type="email"
         placeholder="Email"
-        class="login-input"
+        class="login-input roboto-regular"
       />
       <input
         formControlName="password"
         type="password"
         placeholder="Password"
-        class="login-input"
+        class="login-input roboto-regular"
       />
-      <button type="submit" class="login-submit-button">Sign in</button>
+      <button type="submit" class="login-submit-button roboto-regular">
+        Sign in
+      </button>
     </form>
     <div class="bottom-form-links">
-      <a routerLink="/register" class="register-link">Sign up for an account</a>
+      <a routerLink="/register" class="register-link roboto-regular"
+        >Sign up for an account</a
+      >
     </div>
   </div>
 </div>
