@@ -3,7 +3,10 @@
   [ngClass]="{ 'inline-form-container-editing': isEditing }"
   (click)="activeEditing()"
 >
-  <div class="inline-form-text" *ngIf="!isEditing">{{ defaultText }}</div>
+  <p class="inline-form-text roboto-regular" *ngIf="!isEditing">
+    {{ defaultText }}
+  </p>
+
   <form
     [formGroup]="form"
     (ngSubmit)="onSubmit()"

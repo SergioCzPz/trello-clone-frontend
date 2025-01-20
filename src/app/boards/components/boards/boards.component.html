@@ -23,7 +23,7 @@
       </div>
       <div class="board-tile-list">
         <app-inline-form
-          class="create-board-form"
+          class="board__form"
           defaultText="Create new board"
           (handleSubmit)="createBoard($event)"
         ></app-inline-form>
@@ -31,8 +31,8 @@
       <div class="board__boards">
         <a
           [routerLink]="['/boards', board.id]"
-          *ngFor="let board of boards"
-          class="board-tile"
+          *ngFor="let board of boards()"
+          class="board__tile roboto-regular"
         >
           {{ board.title }}
         </a>

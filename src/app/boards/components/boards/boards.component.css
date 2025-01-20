@@ -3,3 +3,54 @@
   grid-template-columns: 0.25fr 0.75fr;
   padding: 2rem;
 }
+
+.home-left-sidebar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 0;
+  padding: 1.5rem;
+}
+
+.home-left-sidebar-container a {
+  margin: 0;
+}
+
+.boards-page-header-name {
+  margin: 2rem;
+}
+
+.boards-section-container {
+  margin: 0;
+}
+
+.board-tile-list {
+  display: block;
+}
+
+.board__form {
+  margin: 2rem 0;
+  padding: 2rem;
+  background-color: rgb(88, 88, 187);
+}
+
+.board__boards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.board__tile {
+  text-align: center;
+  background: #00adcc;
+  color: #fff;
+  padding: 1.5rem;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  width: 25rem;
+  transition: background-color 0.3s ease;
+}
+
+.board__tile:hover {
+  background: #0088a0;
+}

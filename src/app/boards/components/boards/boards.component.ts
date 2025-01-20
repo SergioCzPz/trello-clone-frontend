@@ -4,6 +4,8 @@ import {
   inject,
   OnDestroy,
   OnInit,
+  signal,
+  WritableSignal,
 } from '@angular/core';
 import { BoardsService } from '../../../shared/services/boards.service';
 import { BoardInterface } from '../../../shared/types/board.interface';
@@ -17,7 +19,7 @@ import { Subject, takeUntil } from 'rxjs';
 })
 export class BoardsComponent implements OnInit, OnDestroy {
   private readonly boardsService = inject(BoardsService);
-  boards: BoardInterface[] = [];
+  boards: WritableSignal<BoardInterface[]> = signal([]);
   unsubscribe$ = new Subject<void>();
 
   ngOnInit(): void {
@@ -25,7 +27,7 @@ export class BoardsComponent implements OnInit, OnDestroy {
       .getBoards()
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe(boards => {
-        this.boards = boards;
+        this.boards.set(boards);
       });
   }
 
@@ -39,7 +41,7 @@ export class BoardsComponent implements OnInit, OnDestroy {
       .createBoard(title)
       .pipe(takeUntil(this.unsubscribe$))
       .subscribe(createdBoard => {
-        this.boards = [...this.boards, createdBoard];
+        this.boards.set([...this.boards(), createdBoard]);
       });
   }
 }
