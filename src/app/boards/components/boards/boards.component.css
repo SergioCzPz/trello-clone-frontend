@@ -2,12 +2,15 @@
   display: grid;
   grid-template-columns: 0.25fr 0.75fr;
   padding: 2rem;
+  background-color: rgb(239, 243, 244);
+  min-height: 100vh;
 }
 
 @media (max-width: 767px) {
   .boards {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
   }
 }
 

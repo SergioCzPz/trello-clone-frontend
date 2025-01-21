@@ -29,6 +29,7 @@ import { TaskInputInterface } from '../../../shared/types/taskInput.interface';
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
+  styleUrl: './board.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BoardComponent implements OnInit, OnDestroy {

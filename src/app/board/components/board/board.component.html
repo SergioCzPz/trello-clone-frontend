@@ -1,18 +1,23 @@
 <app-top-bar></app-top-bar>
 <div class="board" *ngIf="data$ | async as data">
-  <div class="board-header-container">
+  <div class="board-header-container board__header">
     <app-inline-form
-      class="edit-board-form"
+      class="edit-board-form board__edit-form"
       [defaultText]="data.board.title"
       [title]="data.board.title"
       (handleSubmit)="updateBoardName($event)"
     >
     </app-inline-form>
-    <button class="delete-board" (click)="deleteBoard()">Delete board</button>
+    <button
+      class="delete-board board__btn-delete roboto-regular"
+      (click)="deleteBoard()"
+    >
+      Delete board
+    </button>
   </div>
-  <div class="columns">
-    <div class="column" *ngFor="let column of data.columns">
-      <div class="column-title">
+  <div class="columns board__columns">
+    <div class="column board__column" *ngFor="let column of data.columns">
+      <div class="column-title column__title">
         <app-inline-form
           class="edit-column-form"
           [defaultText]="column.title"
@@ -20,21 +25,23 @@
           (handleSubmit)="updateColumnName($event, column.id)"
         >
         </app-inline-form>
-        <button (click)="deleteColumn(column.id)">
+        <button class="column__btn-delete" (click)="deleteColumn(column.id)">
           <img
             src="/assets/close_icon.svg"
-            alt="close"
-            class="column-delete-icon"
+            alt="delete"
+            class="column-delete-icon column__img-delete"
           />
         </button>
       </div>
-      <button
-        *ngFor="let task of getTasksByColumn(column.id, data.tasks)"
-        class="task"
-        (click)="openTask(task.id)"
-      >
-        {{ task.title }}
-      </button>
+      <div class="column__tasks">
+        <button
+          *ngFor="let task of getTasksByColumn(column.id, data.tasks)"
+          class="task column__task roboto-regular"
+          (click)="openTask(task.id)"
+        >
+          {{ task.title }}
+        </button>
+      </div>
       <app-inline-form
         class="create-task-form"
         defaultText="Add a card"
@@ -46,7 +53,7 @@
       </app-inline-form>
     </div>
     <app-inline-form
-      class="create-column-form"
+      class="create-column-form column__create"
       defaultText="Add a list"
       [hasButton]="true"
       buttonText="Add list"

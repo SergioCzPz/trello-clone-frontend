@@ -25,6 +25,7 @@ import { SocketEventsEnum } from '../../../shared/types/socketEvents.enum';
 @Component({
   selector: 'app-task-model',
   templateUrl: './taskModal.component.html',
+  styleUrl: './taskModal.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TaskModalComponent implements OnDestroy {
