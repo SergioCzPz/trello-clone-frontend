@@ -1,11 +1,11 @@
-<button
-  class="inline-form-container"
-  [ngClass]="{ 'inline-form-container-editing': isEditing }"
-  (click)="activeEditing()"
->
-  <p class="inline-form-text roboto-regular" *ngIf="!isEditing">
+<section class="form">
+  <button
+    class="form__display roboto-regular"
+    [ngClass]="{ 'form__display--clicked': isEditing }"
+    (click)="activeEditing()"
+  >
     {{ defaultText }}
-  </p>
+  </button>
 
   <form
     [formGroup]="form"
@@ -16,7 +16,7 @@
     <input
       type="text"
       formControlName="title"
-      class="inline-form-input"
+      class="inline-form-input form__input roboto-regular"
       [placeholder]="inputPlaceholder"
       *ngIf="inputType === 'input'"
     />
@@ -34,4 +34,4 @@
       {{ buttonText }}
     </button>
   </form>
-</button>
+</section>
