@@ -1,0 +1,107 @@
+@media (max-width: 1023px) {
+  .task__modal-container {
+    margin: 40rem auto;
+    width: 90%;
+  }
+}
+
+@media (max-width: 767px) {
+  .task__modal-container {
+    margin: 20rem auto;
+    width: 90%;
+  }
+
+  .task-modal__body {
+    flex-direction: column;
+  }
+}
+
+.task__bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+.task-modal__header {
+  align-items: flex-start;
+  margin-bottom: 2.5rem;
+  padding: 0 0 1rem;
+  border-bottom: solid 0.1rem rgba(0, 0, 0, 0.2);
+}
+
+.task-modal__btn-close {
+  border: none;
+  padding: 1.5rem;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.task-modal__img-delete {
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  object-fit: cover;
+}
+
+.task-modal__img-delete:hover {
+  background-color: transparent;
+}
+
+.column__form {
+  margin: 0;
+  width: 20rem;
+}
+
+.column__form-select {
+  margin: 0;
+  padding: 0;
+  height: auto;
+  padding: 1rem;
+  border-radius: 0.3rem;
+  background-position-y: 0.7rem;
+}
+
+.task-modal__description {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2.5rem 0 0;
+}
+
+.task-modal__label {
+  margin: 0;
+}
+
+.task-modal__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.task-modal__actions-label {
+  margin: 0;
+}
+
+.task-modal__actions-btn {
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin: 0;
+  padding: 1.5rem;
+  border: solid 0.2rem rgba(237, 95, 95, 0.3);
+  transition: all 0.3s ease;
+}
+
+.task-modal__actions-btn:hover {
+  color: white;
+  background-color: rgb(237, 95, 95);
+}
+
+.trash-icon {
+  margin: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+}

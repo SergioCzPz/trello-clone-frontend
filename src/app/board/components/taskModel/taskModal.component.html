@@ -1,26 +1,45 @@
-<div class="task-modal-container" *ngIf="data$ | async as data">
-  <div class="task-modal-header">
+<div
+  class="task-modal-container task__modal-container"
+  *ngIf="data$ | async as data"
+>
+  <div class="task-modal-header task-modal__header">
     <app-inline-form
       class="task-modal-edit-title-form"
       [defaultText]="data.task.title"
       [title]="data.task.title"
       (handleSubmit)="updateTaskName($event)"
     ></app-inline-form>
-    <button (click)="goToBoard()">
-      <img src="/assets/close_icon.svg" class="task-modal-close" alt="close" />
+    <button (click)="goToBoard()" class="task-modal__btn-close">
+      <img
+        src="/assets/close_icon.svg"
+        class="task-modal-close task-modal__img-delete"
+        alt="close"
+      />
     </button>
   </div>
-  <div class="task-modal-body">
+  <div class="task-modal-body task-modal__body">
     <div>
-      <form [formGroup]="columnForm" class="column-select-container">
-        <select formControlName="columnId" class="column-select">
-          <option *ngFor="let column of data.columns" [ngValue]="column.id">
+      <form
+        [formGroup]="columnForm"
+        class="column-select-container column__form"
+      >
+        <select
+          formControlName="columnId"
+          class="column-select roboto-regular column__form-select"
+        >
+          <option
+            class="roboto-regular"
+            *ngFor="let column of data.columns"
+            [ngValue]="column.id"
+          >
             {{ column.title }}
           </option>
         </select>
       </form>
-      <div class="task-modal-description">
-        <div class="task-modal-description-label">Description</div>
+      <div class="task-modal-description task-modal__description">
+        <p class="task-modal-description-label roboto-bold task-modal__label">
+          Description
+        </p>
         <app-inline-form
           class="task-modal-edit-description-form"
           [defaultText]="
@@ -34,13 +53,20 @@
         ></app-inline-form>
       </div>
     </div>
-    <div class="task-modal-actions">
-      <div class="task-modal-actions-label">Actions</div>
+    <div class="task-modal-actions task-modal__actions">
+      <p
+        class="task-modal-actions-label roboto-regular task-modal__actions-label"
+      >
+        Actions
+      </p>
       <div>
-        <button class="task-modal-actions-action" (click)="deleteTask()">
+        <button
+          class="task-modal-actions-action roboto-regular task-modal__actions-btn"
+          (click)="deleteTask()"
+        >
           <img
             src="/assets/trash.svg"
-            class="task-modal-actions-icon"
+            class="task-modal-actions-icon trash-icon"
             alt="trash"
           />
           Delete
@@ -49,4 +75,4 @@
     </div>
   </div>
 </div>
-<div class="task-modal-backdrop"></div>
+<div class="task-modal-backdrop task__bg"></div>
