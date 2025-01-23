@@ -4,16 +4,29 @@
 
 .board__header {
   padding: 2.5rem;
-  display: flex;
-  gap: 2.5rem;
+  justify-content: space-between;
   background-color: rgb(224, 228, 235);
+}
+
+@media (max-width: 768px) {
+  .board__header {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
 }
 
 .board__edit-form {
   background-color: transparent;
 }
 
+.board__header-btns {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
 .board__btn-delete {
+  display: block;
   padding: 1.5rem;
   border: none;
   height: auto;
@@ -24,6 +37,44 @@
 
 .board__btn-delete:hover {
   background-color: rgb(196, 59, 59);
+}
+
+.form-board {
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-end;
+}
+
+@media (max-width: 768px) {
+  .form-board {
+    flex-direction: column;
+  }
+}
+
+.form-board__info {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-board__btn-submit {
+  margin-top: 1.5rem;
+  background-color: rgb(70, 100, 251);
+  padding: 1rem 2.5rem;
+  border: none;
+  cursor: pointer;
+  color: white;
+  border-radius: 0.3rem;
+  transition: background-color 0.3s ease;
+}
+@media (max-width: 768px) {
+  .form-board__btn-submit {
+    margin: 0;
+    width: 100%;
+  }
+}
+
+.form-board__btn-submit:hover {
+  background-color: rgb(64, 91, 225);
 }
 
 .board__columns {

@@ -1,19 +1,42 @@
 <app-top-bar></app-top-bar>
 <div class="board" *ngIf="data$ | async as data">
   <div class="board-header-container board__header">
-    <app-inline-form
-      class="edit-board-form board__edit-form"
-      [defaultText]="data.board.title"
-      [title]="data.board.title"
-      (handleSubmit)="updateBoardName($event)"
-    >
-    </app-inline-form>
-    <button
-      class="delete-board board__btn-delete roboto-regular"
-      (click)="deleteBoard()"
-    >
-      Delete board
-    </button>
+    <div class="board__header-btns">
+      <app-inline-form
+        class="edit-board-form board__edit-form"
+        [defaultText]="data.board.title"
+        [title]="data.board.title"
+        (handleSubmit)="updateBoardName($event)"
+      >
+      </app-inline-form>
+      <button
+        class="delete-board board__btn-delete roboto-regular"
+        (click)="deleteBoard()"
+      >
+        Delete board
+      </button>
+    </div>
+
+    <div form class="form-board-container">
+      <form [formGroup]="formBoard" (ngSubmit)="addUser()" class="form-board">
+        <div class="form-board__info">
+          <label for="user-email" class="form-board__label roboto-regular"
+            >Add user to this board</label
+          >
+          <input
+            formControlName="email"
+            id="user-email"
+            type="email"
+            placeholder="User email"
+            required
+            class="form-board__input roboto-regular"
+          />
+        </div>
+        <button type="submit" class="form-board__btn-submit roboto-regular">
+          Add
+        </button>
+      </form>
+    </div>
   </div>
   <div class="columns board__columns">
     <div class="column board__column" *ngFor="let column of data.columns">

@@ -25,6 +25,7 @@ import { ColumnInputInterface } from '../../../shared/types/columnInput.interfac
 import { TaskInterface } from '../../../shared/types/task.interface';
 import { TasksService } from '../../../shared/services/task.service';
 import { TaskInputInterface } from '../../../shared/types/taskInput.interface';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-board',
@@ -40,6 +41,7 @@ export class BoardComponent implements OnInit, OnDestroy {
   private readonly socketService = inject(SocketService);
   private readonly columnsService = inject(ColumnsService);
   private readonly tasksService = inject(TasksService);
+  private readonly fb = inject(FormBuilder);
 
   boardId: string;
   data$: Observable<{
@@ -48,6 +50,9 @@ export class BoardComponent implements OnInit, OnDestroy {
     tasks: TaskInterface[];
   }>;
   unsubscribe$ = new Subject<void>();
+  formBoard = this.fb.group({
+    email: [''],
+  });
 
   constructor() {
     const boardId = this.route.snapshot.paramMap.get('boardId');
@@ -211,5 +216,12 @@ export class BoardComponent implements OnInit, OnDestroy {
 
   openTask(taskId: string): void {
     this.router.navigate(['boards', this.boardId, 'tasks', taskId]);
+  }
+
+  addUser(): void {
+    if (this.formBoard.value.email !== '' && this.formBoard.value.email) {
+      this.boardService.addUser(this.formBoard.value.email, this.boardId);
+    }
+    this.formBoard.reset();
   }
 }

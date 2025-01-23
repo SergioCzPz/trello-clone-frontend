@@ -28,13 +28,16 @@
         ></app-inline-form>
       </div>
       <div class="board__boards">
-        <a
-          [routerLink]="['/boards', board.id]"
-          *ngFor="let board of boards()"
-          class="board__tile roboto-regular"
-        >
-          {{ board.title }}
-        </a>
+        @for (board of boards(); track $index) {
+          @if (board !== null) {
+            <a
+              [routerLink]="['/boards', board.id]"
+              class="board__tile roboto-regular"
+            >
+              {{ board.title }}
+            </a>
+          }
+        }
       </div>
     </div>
   </div>

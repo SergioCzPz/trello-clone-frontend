@@ -5,10 +5,14 @@ import { SocketService } from '../../shared/services/socket.service';
 import { SocketEventsEnum } from '../../shared/types/socketEvents.enum';
 import { ColumnInterface } from '../../shared/types/column.interface';
 import { TaskInterface } from '../../shared/types/task.interface';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class BoardService {
   private readonly socketService = inject(SocketService);
+  private readonly http = inject(HttpClient);
+
   board$ = new BehaviorSubject<BoardInterface | null>(null);
   columns$ = new BehaviorSubject<ColumnInterface[]>([]);
   tasks$ = new BehaviorSubject<TaskInterface[]>([]);
@@ -85,5 +89,15 @@ export class BoardService {
       .getValue()
       .filter(task => task.id !== taskId);
     this.tasks$.next(updatedTasks);
+  }
+
+  addUser(email: string, boardId: string): void {
+    const url = environment.apiUrl + '/userboard';
+    this.http
+      .post<{ userId: string; boardId: string }>(url, {
+        email,
+        boardId,
+      })
+      .subscribe();
   }
 }
